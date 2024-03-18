@@ -8,19 +8,20 @@ namespace MauiMarkupExtension;
 public class OnScreenSizeExtension : BindableObject, IMarkupExtension<BindingBase>
 {
 
-    public static readonly BindableProperty PageWidthProperty =
-      BindableProperty.CreateAttached(nameof(PageWidth), typeof(double), typeof(OnScreenSizeExtension), default(double), propertyChanged: OnPageWidthChanged);
+    //public static readonly BindableProperty PageWidthProperty =
+    //  BindableProperty.Create(nameof(PageWidth), typeof(double), typeof(OnScreenSizeExtension), default(double), propertyChanged: OnPageWidthChanged);
 
-    public double PageWidth
-    {
-        get { return (double)GetValue(PageWidthProperty); }
-        set { SetValue(PageWidthProperty, value); }
-    }
+    //public double PageWidth
+    //{
+    //    get { return (double)GetValue(PageWidthProperty); }
+    //    set { SetValue(PageWidthProperty, value); }
+    //}
 
-    private static void OnPageWidthChanged(BindableObject bindable, object oldValue, object newValue)
-    {
-        WeakReferenceMessenger.Default.Send(new ScreenSizeChangedMessage((double)newValue));
-    }
+    //private static void OnPageWidthChanged(BindableObject bindable, object oldValue, object newValue)
+    //{
+    //    Debug.WriteLine(newValue);
+    //    WeakReferenceMessenger.Default.Send(new ScreenSizeChangedMessage((double)newValue));
+    //}
 
     public Type TypeConverter { get; set; }
     public object Default { get; set; }

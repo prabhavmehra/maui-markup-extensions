@@ -1,4 +1,6 @@
-﻿namespace MauiMarkupExtension
+﻿using System.Diagnostics;
+
+namespace MauiMarkupExtension
 {
     public partial class MainPage : ContentPage
     {
@@ -7,6 +9,8 @@
         public MainPage()
         {
             InitializeComponent();
+
+            BindingContext = this;
         }
 
         private void OnCounterClicked(object sender, EventArgs e)
