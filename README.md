@@ -23,15 +23,10 @@ The `OnScreenSize` markup extension in the `MauiMarkupExtension` namespaces simp
 
     -  `PageWidth` (required)
         - Send resize (Width) updates of Page and View to markup extension to calculate required value of control.
-            1. declare a name on the Page or View  `x:Name="Name"` and use accordingly
+            1. declare a name on the Page or View  `x:Name="Name"` and use accordingly. It is an attached proprty so add it to the ContentPage or any other control/View
                ```xml
-                    PageWidth={Binding Width,
-                        Source={x:Reference MonkeyPage}}
+                    local:MyControl.PageWidth="{Binding Width, Source={Reference Name}}"
                ```
-            2. Add a reference to the Page/View directly 
-             ```xml 
-                    PageWidth={Binding Width, Source={RelativeSource AncestorType={x:Type ContentPage}}} 
-             ```
 
     -  `TypeConverter` (optional)
         - Convert string value to required type, if needed. 
@@ -51,8 +46,6 @@ The `OnScreenSize` markup extension in the `MauiMarkupExtension` namespaces simp
                                                        Medium='250',
                                                        Small='*',
                                                        ExtraSmall='*',
-                                                       PageWidth={Binding Width,
-                                                                          Source={x:Reference MonkeyPage}},
                                                        TypeConverter={x:Type ColumnDefinitionCollectionTypeConverter}}"
            
            RowSpacing="16">
@@ -67,9 +60,7 @@ The `OnScreenSize` markup extension in the `MauiMarkupExtension` namespaces simp
            ```xml
             IsVisible="{extension:OnScreenSize 'False',
                                                Medium='True',
-                                               ExtraSmall='False'
-                                               PageWidth={Binding Width,
-                                                                  Source={x:Reference MonkeyPage}}}"
+                                               ExtraSmall='False'}"
            ```
            With the above, the `Large` and `ExtraLarge` breakpoint will take the value for `Medium`. Similarly, `Small` will fallback to `ExtraSmall` value.
    
